@@ -14,7 +14,7 @@
 
 - `Prefix + Ctrl + f`: Open up fzf in a new tab. (e.g. prefix = ctrl + a. Hold ctrl ->
   press a -> press f -> done)
-- If you type a name that doesn't exist, you will be prompted to create it. 
+- If you type a name that doesn't exist, you will be prompted to create it.
 
 > If this name conflicts with another session name -> add a double/single quotes `'example'`
 
@@ -38,6 +38,12 @@ set -g @fzf-goto-session 'key binding'
 
 ```bash
 set -g @fzf-goto-session 's'
+```
+
+#### Without prefix
+
+```bash
+set -g @fzf-goto-session-without-prefix 'true'
 ```
 
 ### Window dimensions

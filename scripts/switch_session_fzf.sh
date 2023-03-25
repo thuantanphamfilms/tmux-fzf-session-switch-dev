@@ -8,7 +8,7 @@ function main {
   local query
   local sess_arr
   local retval
-  sessions=$(tmux list-windows -a -F "#{session_name}:#{window_index} ⮊ 🪟 #{window_name}" | sed 's/ ⮊*.//g')
+  sessions=$(tmux list-windows -a -F "#{session_name}:#{window_index} ⮊ 🪟 #{window_name}" | fzf --select-1 --exit-0 --print-query --reverse | sed 's/ ⮊.*//g')
   retval=$?
 
   IFS=$'\n' read -rd '' -a sess_arr <<<"$sessions"

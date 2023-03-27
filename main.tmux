@@ -46,7 +46,7 @@ function set_goto_session_bindings {
 			done
 		fi
 	else
-		if [ "$search_session_only" = true ]; then
+		if [ "$without_prefix" = true ]; then
 			local key
 			for key in $key_bindings; do
 				tmux bind -n "$key" display-popup -w "$width" -h "$height" -y 15 -E "$CURRENT_DIR/scripts/switch_session.sh"

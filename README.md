@@ -4,16 +4,22 @@
 
 ![preview img](/img/preview.png)
 
+## Can do?
+
+1. Session + window name fuzzy search and switch.
+2. Create new session
+
 ## Getting started
 
-- Video: https://youtu.be/WJEphxyKAbw
+- Video: 
+  - Tutorial: https://youtu.be/WJEphxyKAbw
+  - Demo v2, session + window search: https://youtu.be/XWdDwQJgUmw
+
 - Install the [tpm](https://github.com/tmux-plugins/tpm) Tmux Plugin Manager.
 - Put `set -g @plugin 'thuanOwa/tmux-fzf-session-switch'` into your tmux config
 - Use tpm to install this plugin. Default you can press `prefix + I` (`I` is
   `shift + i` = I)
-
-- `Prefix + Ctrl + f`: Open up fzf in a new tab. (e.g. prefix = ctrl + a. Hold ctrl ->
-  press a -> press f -> done)
+- `Prefix + Ctrl + f`: Open up fzf in a new tab. (e.g. prefix = ctrl + a. Hold ctrl -> press a -> press f -> done)
 - If you type a name that doesn't exist, you will be prompted to create it.
 
 > If this name conflicts with another session name -> add a double/single quotes `'example'`
@@ -22,7 +28,7 @@
 
 - [Tmux >= 3.3a](https://github.com/thuanowa/tmux-fzf-session-switch/pull/5/files) `pop-up menu`
 - [fzf](https://github.com/junegunn/fzf)
-- Rg (recommended but not required)
+- `>=` 2 tmux sessions (bug [#10](https://github.com/thuanowa/tmux-fzf-session-switch/issues/10))
 
 ## Customize
 
@@ -66,20 +72,13 @@ set -g @fzf-goto-win-height 20
 
 ```bash
 function tmuxSessionSwitch() {
-  local session
-  session=$(tmux list-sessions -F "#{session_name}" | fzfDown)
+  session=$(tmux list-windows -a | fzf | sed 's/: .*//g')
   tmux switch-client -t "$session"
 }
 ```
 
-> fzfDown is my customize fzf ui, you can simply use fzf instead of fzfDown
-
 ```bash
-fzfDown() { fzf --height 50% --min-height 20 --bind ctrl-/:toggle-preview "$@" --reverse }
-```
-
-```bash
-function killAllUnnameTmuxSession() {
+function tmux_kill_uname_session() {
   echo "kill all unname tmux session"
   cd /tmp/
   tmux ls | awk '{print $1}' | grep -o '[0-9]\+' >/tmp/killAllUnnameTmuxSessionOutput.sh
@@ -94,7 +93,7 @@ function killAllUnnameTmuxSession() {
 > use with `clear` command is the best
 
 ```
-alias clear='killAllUnnameTmuxSession ; clear -x'
+alias clear='tmux_kill_uname_session ; clear -x'
 ```
 
 ### Easy to press
@@ -117,4 +116,12 @@ space + semicolon: KEY_RIGHTCTRL+a+f
 ## QnA
 
 Why I don't create push request to main repo?
+
 -> "Don't confirm `y` to create a new session". This one different flow from the original repo. So that's why I don't push request into original repo.
+
+Different from https://github.com/rcribbs/tmux-fzf-session-switch ?
+
+1. No confirm y to create new session
+1. tmux pop-up
+1. Custom key binding, window dimensions
+1. session + window search

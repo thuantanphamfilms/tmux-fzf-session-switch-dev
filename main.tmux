@@ -30,7 +30,7 @@ function set_goto_session_bindings {
 	local without_prefix=$(get_tmux_option "$tmux_option_goto_without_prefix" "$defautl_without_prefix")
 	local width=$(get_tmux_option "$tmux_option_width" "$default_width")
 	local height=$(get_tmux_option "$tmux_option_height" "$default_height")
-	local search_session_only=$(get_tmux_option "$fzf-goto-session-only" "$defautl_search_session_only")
+	local search_session_only=$(get_tmux_option "$tmux_option_search_session_only" "$defautl_search_session_only")
 
 
 	if [ "$search_session_only" = false ]; then

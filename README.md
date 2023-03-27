@@ -34,6 +34,12 @@
 
 > 🫰Thanks to [@erikw](https://github.com/erikw)
 
+### Search session only
+
+```bash
+set-option -g @fzf-goto-session-only 'true'
+```
+
 ### Key binding
 
 ```bash

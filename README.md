@@ -1,5 +1,3 @@
-↖️ (Feeling lost? Use the GitHub TOC!)
-
 # TMUX FZF Session Switch
 
 ![preview img](/img/preview.png)
@@ -125,9 +123,13 @@ Why I don't create push request to main repo?
 
 -> "Don't confirm `y` to create a new session". This one different flow from the original repo. So that's why I don't push request into original repo.
 
-Different from https://github.com/rcribbs/tmux-fzf-session-switch ?
+Different from <https://github.com/rcribbs/tmux-fzf-session-switch>?
 
 1. No confirm y to create new session
 1. tmux pop-up
 1. Custom key binding, window dimensions
 1. session + window search
+
+Different from <https://github.com/sainnhe/tmux-fzf>?
+
+1. Simple. I want to switch to session xyz press shortcut search if don't have press enter will create one.
